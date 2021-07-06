@@ -1,0 +1,201 @@
+# Starbuck Productions Presents:
+# A text based truck driving where the player has to deliver cargo through a war torn part of the country.
+from art import *
+import sys
+game_over = text2art('GAME OVER')
+art4 = text2art('THE END')
+art3 = text2art('Chapter 3: The   City')
+art2 = text2art('Chapter Two: The Road')
+art1 = text2art('Chapter One: Old Habits')
+Art_title = text2art('Walking Sim')
+print(Art_title)
+
+
+def tutorial_yes():
+    print('Oh, good, I am glad. First things let\'s get you your directions set, can you look to the LEFT for me?')
+    answer = input(">").lower()
+    if "l" in answer:
+        print('You look left')
+        print('Okay that\'s good, does it feel good? Go ahead and look to the RIGHT for me')
+    answer = input(">").lower()
+    if "r" in answer:
+        print('You look right')
+        print('Good stuff, good stuff, now remember you don\'t have to type the whole word, just the letter will do \n'
+              'Try it right now, can you look UP for me?')
+    answer = input(">").lower()
+    if "u" in answer:
+        print('You look up.')
+        print('See? Upper case, lower case, it doesn\'t matter, try it by looking DOWN for me.')
+    answer = input(">").lower()
+    if "d" in answer:
+        print('you look down')
+        print('See? Easy as pie!')
+
+
+def tutorial_no():
+    print("You sure? Well alright then.")
+
+
+def truck_inspect_yes():
+    print('What do you check first? TIRES, ENGINE, BED')
+    answer = input(">").lower()
+    if 't' in answer:
+        truck_tire()
+        accident_bed()
+    else:
+        if 'e' in answer:
+            truck_engine()
+            accident_bed()
+    if 'b' in answer:
+        truck_bed()
+        accident_bed()
+
+
+def truck_inspect_no():
+    accident_bed()
+
+
+def truck_tire():
+    print('You slap your hand on the tires and check their pressure, everything appears nominal. Lug nuts are \n'
+          'tight as well.')
+
+
+def truck_engine():
+    print('You pop open the hood, you jokingly think to yourself "yep, this engine is made out of engine."')
+
+
+def truck_bed():
+    print('It is difficult to get a good look at the bed of the truck as the giant mech head is currently \n'
+          'being lowered, but it appears to be in good shape.')
+
+
+def accident_bed():
+    print('HEY LOOK OUT, a voice cries out, one of the cables snaps on the mech head, dropping it onto your truck \n'
+          'with a headsplitting crash.')
+
+
+def the_finale():
+    print('You ease the truck through, constantly cranking the wheel left and right and constantly \n'
+          'scanning the area with the scanner, it takes almost 2 hours to get through but eventually you do. \n'
+          'The drive through the dilapidated city is uneventful, and so is most of the journey. \n'
+          '\n'
+          '\n'
+          'You arrive at the warehouse and reverse into the dock. Congrats, you have contributed to the \n'
+          'War Economy and more lives will be lost, are you proud?')
+
+
+# GAME START
+
+print('Welcome back, what is your name again?')
+name = input()
+print('Ah,', name,
+      ', appreciate ya coming back, you know after the accident we all assumed you weren\'t gonna come back \n'
+      'But glad you proved us wrong, haha, so, would you like to run through the basics?')
+answer = input(">").lower()
+if 'y' in answer:
+    tutorial_yes()
+else:
+    if 'n' in answer:
+        tutorial_no()
+
+print(art1)
+
+print('You arrive at your truck as the giant crane lowers the cargo onto the flatbed, looks like you\'ll be \n'
+      ' transporting the head piece for the armies new debut \'mech, the ZAKI-47.')
+print(' Would you like to do a truck inspection before setting off?')
+answer = input(">").lower()
+if 'y' in answer:
+    truck_inspect_yes()
+else:
+    if 'n' in answer:
+        truck_inspect_no()
+
+
+print('DAMN THAT WAS A CLOSE ONE!, Cutter, your supervisor says as he brushes the dirt off your back and shoulder. \n'
+      'On the bright side, he says,least loading is basically done. Now look at this, he says as he pulled out a map \n'
+      'This is where we are, this X here, this cargo has to go through this city and passed this valley to make it \n'
+      'to the facility here. You get me?')
+answer = input(">").lower()
+if 'y' in answer:
+    print('Good, grab some snacks and buckle up; it\'s going to be a helluva drive.')
+else:
+    if 'n' in answer:
+        print('Look, it\'s pretty simple, drive truck to destination, do not lose cargo, unless of course...\n'
+              '...you aren\'t up to the job?')
+        print('To quit job, please type QUIT, otherwise type CONTINUE')
+        answer = input(">").lower()
+        if 'q' in answer:
+            print('And so you hand the keys back to cutter, let someone else do this job then.')
+            print(game_over)
+            sys.exit()
+        if 'c' in answer:
+            print('You correct yourself, of course you\'ve got it. Easy as pie.')
+            #print(art2)
+
+print(art2)
+print('The road thus far was quiet, a few winding turns but mostly it was a straight shot. Ever since the war nearly '
+      'nuked all of civilization, a true streamlining of society was used and that meant roads always going from'
+      'A to B as quickly as possible.')
+print('...')
+print('..')
+print('.')
+
+print('You come to a fork in the road, to the right is a forest and to the left the highway continues on \n'
+      'into the unknown, which way do you go? RIGHT or LEFT?')
+
+answer = input(">").lower()
+if 'r' in answer:
+    print('You turn your wheel to the right and creep into the forest.'
+          'It is not long before the path narrows to a halt.')
+    print('You hear a rustling in the trees and realize your mistake, how one earth did you think a truck would fit? \n'
+          'You don\'t even hear the first shot as it connects and rips through your skull.')
+    print(game_over)
+else:
+    if 'l' in answer:
+        print('You stick to the road. There is no way your truck could have maneuvered through all those trees')
+
+print(art3)
+
+
+print('You pull to a stop just outside the city limits. Most of the buildings have been destroyed with \n'
+      'giant craters dotting the landscape. You do not know what happened here, but it is clear that \n'
+      'more than one bomb has been dropped in the area following by a lot of mech fighting.')
+
+print('Continue?')
+answer = input(">").lower()
+if 'y' in answer:
+    print('You put the tuck into gear and continue')
+else:
+    if 'n' in answer:
+        print('It is too late to turn back now; you put the truck into gear and continue.')
+
+print('... \n'
+      '.. \n'
+      '.')
+
+print('You continue on but something feels off, smaller craters litter the road and surrounding area. \n'
+      'Do you continue or scan the area?')
+answer = input(">").lower()
+if 's' in answer:
+    print('You push the scan button on the dash and an orange glowing wave shoots out from your truck. \n'
+          'It was a good thing you scanned, anti vehicle landmines are littered throughout the main road.')
+else:
+    if 'c' in answer:
+        print('You drive forward, the front end of your truck explodes as it drives on a landmine. \n'
+              'Ripping your cabin apart you are flung across the road, landing on another bomb sending \n'
+              'pieces of you everywhere')
+        print(game_over)
+        sys.exit()
+
+print('Do you continue through the minefield carefully?')
+answer = input(">").lower()
+if 'n' in answer:
+    print('So what, just gonna sit here? You do not have much more to go, finish the job, ok?')
+    if 'o' in answer:
+        the_finale()
+else:
+    if 'y' in answer:
+        the_finale()
+
+
+print(art4)
